@@ -3,25 +3,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Main {
+public class Main{
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        double sum=0;
         int n = Integer.parseInt(br.readLine());
-
-        int[] nums = new int[n];
-        for (int i = 0; i < n; i++) {
-            nums[i] = Integer.parseInt(br.readLine());
+        int cut=(int) Math.round(n * 0.15);
+        int[] arr = new int[n];
+        
+        for(int i = 0; i < n; i++){
+            arr[i] = Integer.parseInt(br.readLine());
         }
-        Arrays.sort(nums);
+        Arrays.sort(arr);
 
-        int out = (int) Math.round(n * 0.15);
-
-        double sum = 0;
-        for (int i = out; i < n - out; i++) {
-            sum += nums[i];
+        for(int i = cut; i < n-cut; i++){
+            sum+=arr[i];
         }
 
-        int result = (int) Math.round(sum / (n - out * 2));
-        System.out.println(result);
+        int avg=(int) Math.round(sum/(n-2*cut));
+        System.out.println(avg);
     }
 }
