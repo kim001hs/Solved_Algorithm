@@ -1,36 +1,27 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
 
-        int result = 0;
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = Integer.parseInt(br.readLine());
+        }
+        Arrays.sort(nums);
 
-        int testCase = Integer.parseInt(br.readLine());
-        int cut = (int) Math.round(testCase * 0.15);
+        int out = (int) Math.round(n * 0.15);
 
-        ArrayList<Integer> list = new ArrayList<>();
-
-        for (int a=0; a<testCase; a++) {
-            list.add(Integer.parseInt(br.readLine()));
+        double sum = 0;
+        for (int i = out; i < n - out; i++) {
+            sum += nums[i];
         }
 
-        Collections.sort(list);
-        int size = testCase-(cut*2);
-
-        for (int a=cut; a<size+cut; a++) {
-        	/*
-            cut 번 부터, size+cut 번 인덱스 까지
-            result 에 더한다.
-            */
-            
-            result += list.get(a);
-        }
-
-        result = (int) Math.round((double) result / size);
+        int result = (int) Math.round(sum / (n - out * 2));
         System.out.println(result);
     }
 }
