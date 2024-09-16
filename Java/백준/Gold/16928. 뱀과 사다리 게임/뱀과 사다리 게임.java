@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Main {
 
-    static int[] map = new int[101]; // 각 칸의 상태를 저장하는 배열
+    static int[] map = new int[101];
 
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt(); // 사다리 개수
         int m = sc.nextInt(); // 뱀의 개수
-        
+
         // 기본적으로 각 칸은 자기 자신으로 설정
         for (int i = 1; i <= 100; i++) {
             map[i] = i;
@@ -36,17 +36,17 @@ public class Main {
     }
 
     public static void BFS() {
-        boolean[] visited = new boolean[101]; // 방문 여부를 기록
+        boolean[] visited = new boolean[101];
         Queue<int[]> q = new LinkedList<>();
-        q.add(new int[] { 1, 0 }); // 시작점 {1번 칸, 이동 횟수 0}
+        q.add(new int[]{1, 0}); // {현재 위치, 이동 횟수}
         visited[1] = true;
 
         while (!q.isEmpty()) {
             int[] temp = q.poll();
-            int current = temp[0]; // 현재 위치
-            int move = temp[1]; // 이동 횟수
+            int current = temp[0];
+            int move = temp[1];
 
-            // 100번 칸에 도착했으면 이동 횟수 출력 후 종료
+            // 100번 칸에 도착하면 이동 횟수를 출력하고 종료
             if (current == 100) {
                 System.out.println(move);
                 return;
@@ -65,7 +65,7 @@ public class Main {
                 // 아직 방문하지 않은 칸이면 큐에 추가
                 if (!visited[next]) {
                     visited[next] = true;
-                    q.add(new int[] { next, move + 1 });
+                    q.add(new int[]{next, move + 1});
                 }
             }
         }
