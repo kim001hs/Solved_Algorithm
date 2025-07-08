@@ -7,7 +7,7 @@ int main(){
     ios::sync_with_stdio(false);
 
     int n;
-    priority_queue<int, vector<int>> pq;
+    priority_queue<int> pq;
     cin >> n;
     for(int i=0; i<n; i++){
         int x;
