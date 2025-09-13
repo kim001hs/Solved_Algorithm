@@ -1,42 +1,30 @@
 import sys
 def input(): return sys.stdin.readline().rstrip()
-sys.setrecursionlimit(100000)
-MX = int(1e9)+1
+values=[]
 n=int(input())
-circles=[]
-class Circle:
-    def __init__(self,st,en):
-        self.st=st
-        self.en=en
-        self.dia=en-st
-        self.children=[]
-
-def append_child(node):
-    global index
-    while index<n and circles[index][1]<=node.en:
-        child=Circle(circles[index][0],circles[index][1])
-        node.children.append(child)
-        index+=1
-        append_child(child)
-
-def calculate(node):
-    global count
-    count+=1
-    sum_dia=0
-    for child in node.children:
-        sum_dia+=child.dia
-        calculate(child)
-    if node.dia==sum_dia:
-        count+=1
-
 for i in range(n):
     x,r=map(int,input().split())
-    circles.append([x-r,x+r])
-circles.sort(key=lambda x:(x[0],-x[1]))
-
-root=Circle(-MX,MX)
-index,count=0,0
-append_child(root)
-
-calculate(root)
+    values.append(["L", x-r])
+    values.append(["R", x+r])
+values.sort(key=lambda x:(-x[1],x[0]),reverse=True)#위치기준 동일하면 R이 먼저
+#str에 - 붙일 수 없어서 reverse로
+stack=[]
+count=1
+for i in values:
+    cum_width=0
+    if i[0]=="L":
+        stack.append(i)
+    else:
+        while stack:
+            prev=stack.pop()
+            if prev[0]=="L":
+                width=i[1]-prev[1]
+                if width==cum_width:
+                    count+=2
+                else:
+                    count+=1
+                stack.append(["C",width])
+                break
+            else:#prev[0]=="C"
+                cum_width+=prev[1]
 print(count)
