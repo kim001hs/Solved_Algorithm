@@ -7,7 +7,7 @@ arr=[]
 for i in range(N):
     arr.append(int(input()))
 arr.sort()
-def installNum(len):
+def installNum(len):#거리를 입력받고 설치할 수 있는 공유기 수를 리턴
     count=1
     temp=arr[0]
     for i in arr:
@@ -17,7 +17,7 @@ def installNum(len):
     return count
 start=1
 end=arr[N-1]
-while(start<=end):
+while(start<=end):#이분탐색을 하면서 최적의 값을 찾음
     mid=(start+end)//2
     if installNum(mid)>=C:
         start=mid+1
