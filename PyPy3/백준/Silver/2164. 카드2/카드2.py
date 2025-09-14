@@ -7,5 +7,5 @@ index=0
 arr=[(n-_) for _ in range(n)]
 for i in range(n-1):
     queue.pop()
-    queue.insert(0, queue.pop())
+    queue.appendleft(queue.pop())
 print(queue.pop())
