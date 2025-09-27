@@ -8,7 +8,7 @@ for _ in range(t):
     for i in range(n):
         a,b=map(int, input().split())
         ipt.append((a,b))
-    ipt.sort()
+    ipt.sort()#a를 기준으로 정렬하고 b의 크기를 확인해서 작으면 result에 append
     result.append(ipt[0])
     for i in ipt:
         if i[1]<result[-1][1]:
