@@ -8,32 +8,24 @@ temp=''
 if s[-1]!='-':#+부호 추가
     s+='+'
 for i in s:
-    if i=='-':
-        eax=int(temp)
+    if i<='-':#-+일때
+        ebx=int(temp)#인트로 만들어서 계산
         temp=''
         if cal=='-':
-            result-=ebx
-            ebx=eax
+            result-=eax
+            eax=ebx
         elif cal=='+':
-            ebx+=eax
+            eax+=ebx
         else:
-            ebx=eax
-        cal='-'
-    elif i=='+':
-        eax=int(temp)
-        temp=''
-        if cal=='-':
-            result-=ebx
-            ebx=eax
-        elif cal=='+':
-            ebx+=eax
+            eax=ebx
+        if i=='-':
+            cal='-'
         else:
-            ebx=eax
-        cal='+'
+            cal='+'
     else:
-        temp=i+temp
+        temp=i+temp#숫자면 뒤집어놨으니까 앞에다 추가
 if cal=='+':
-    result+=ebx
+    result+=eax
 else:
-    result-=ebx
+    result-=eax
 print(result)
