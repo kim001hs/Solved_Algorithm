@@ -22,7 +22,6 @@ cdb = ccw(cx, cy, dx, dy, bx, by)
 if (abc * abd < 0) and (cda * cdb < 0):
     print(1)
 elif abc == abd == 0:  # 두 선분이 일직선
-    # x값만 비교
     if max(ax, bx) >= min(cx, dx) and (min(ax, bx) <= max(cx, dx)) and \
         max(ay, by) >= min(cy, dy) and min(ay, by) <= max(cy, dy):
         print(1)
