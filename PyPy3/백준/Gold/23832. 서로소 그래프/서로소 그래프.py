@@ -17,7 +17,7 @@ def steve(k):
 
 m = int(ceil(sqrt(50000))+1)
 isPrime = [True]*(m)
-steve(int(ceil(sqrt(m))+1))
+steve(m)
 k = int(input())
 res = 0
 for n in range(2, k+1):
